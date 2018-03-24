@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>EmberStack.com</Authors>
+    <Description>.NET client for the VIES - European Commission - VAT validation service</Description>
+    <Copyright>Copyright EmberStack.com</Copyright>
+    <PackageLicenseUrl>https://github.com/EmberStack/ES.FX.Vies/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/EmberStack/ES.FX.Vies</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/EmberStack/CDN/master/Projects/ES.FX/es.fx.1.0.0.0.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/EmberStack/ES.FX.Vies</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>ES Frameworks ES.FX EmberStack .Net DotNet VIES VAT</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.1" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.1" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.1" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>
