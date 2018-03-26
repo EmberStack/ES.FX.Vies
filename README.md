@@ -20,7 +20,7 @@ dotnet add package ES.FX.Vies
 
 
 ## Usage
-This gulp plugin supports converting .resx files to multiple file types.
+Checking a VAT number using the VIES service
 ```csharp
 var vatService = new VatCheckService();
 var result = await vatService.CheckAsync(new VatCheckRequest {CountryCode = "RO", VatNumber = "1234567"});    
