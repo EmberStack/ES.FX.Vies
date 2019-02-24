@@ -1,0 +1,25 @@
+name: $(Build.Number.Major).$(Date:yy)$(DayOfYear).$(Rev:r)
+
+trigger:
+  branches:
+    include:
+      - '*'
+      
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration) --verbosity normal
+  displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet  pack --configuration $(buildConfiguration) --verbosity normal --no-build --output ../nupkg /p:AssemblyVersion=$(Build.BuildNumber) /p:Version=$(Build.BuildNumber)
+  displayName: 'dotnet pack $(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifact nupkg'
+  inputs:
+    PathtoPublish: 'nupkg'
+    ArtifactName: 'nupkg/'
