@@ -7,17 +7,28 @@ namespace ES.FX.Vies
     {
         public async Task<VatCheckResult> CheckAsync(VatCheckRequest request)
         {
-            var checkResult = await new checkVatPortTypeClient()
-                .checkVatAsync(new checkVatRequest(request.CountryCode, request.VatNumber));
-            return new VatCheckResult
+            var client = new checkVatPortTypeClient();
+            try
             {
-                Valid = checkResult.valid,
-                VatNumber = checkResult.vatNumber,
-                Name = checkResult.name,
-                Address = checkResult.address,
-                CountryCode = checkResult.countryCode,
-                RequestDate = checkResult.requestDate
-            };
+                var checkResult = await client.checkVatAsync(
+                    new checkVatRequest(
+                        request.CountryCode,
+                        request.VatNumber));
+
+                return new VatCheckResult
+                {
+                    Valid = checkResult.valid,
+                    VatNumber = checkResult.vatNumber,
+                    Name = checkResult.name,
+                    Address = checkResult.address,
+                    CountryCode = checkResult.countryCode,
+                    RequestDate = checkResult.requestDate
+                };
+            }
+            finally
+            {
+                await client.CloseAsync();
+            }
         }
     }
 }
